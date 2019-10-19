@@ -12,6 +12,16 @@
         * jest
 
 ## how to use
+### preparation
+1. run in `./client`
+    ```sh
+    yarn install
+    ```
+2. run in `./electron`
+    ```sh
+    yarn install
+    ```
+
 ### develop
 1. run
     ```sh
