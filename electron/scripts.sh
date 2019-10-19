@@ -15,14 +15,14 @@ function build() {
     yarn webpack
 
     ## build app
-    cd ../app/ && yarn install --production=false && \
-    yarn build && cd ../backend/
+    cd ../client/ && yarn install --production=false && \
+    yarn build && cd ../electron/
 
     ## build electron
     if [ ! -d "./public/" ]; then
         mkdir "./public/"
     fi
-    rsync -avh "../app/dist/" "./public/"
+    rsync -avh "../client/dist/" "./public/"
     yarn electron-packager "." "Electron" --platform="linux" --arch="x64" --out="./dist-electron"
 }
 
