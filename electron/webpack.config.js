@@ -18,7 +18,6 @@ console.log('NODE_ENV:', env.NODE_ENV);
 
 const path = require('path');
 const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
 
 /**
  * Path / File
@@ -36,14 +35,14 @@ const isProduct = env.NODE_ENV == 'production';
  * Webpack Config
  */
 module.exports = {
-    target: 'node',
+    target: 'electron-main',
     mode: env.NODE_ENV,
 
     context: contextPath,
     entry: {
         main: path.resolve(srcPath, 'main.ts'),
     },
-    externals: [ nodeExternals() ],
+    externals: [],
 
     output: {
         path: distPath,
