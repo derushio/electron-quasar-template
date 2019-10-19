@@ -1,15 +1,13 @@
 <template lang='pug'>
-#Home
+v-layout#$__CLASS_NAME__$(fill-height column)
     .main-pane
-        hello-world(msg='HelloWorld')
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
-import '@/components/HelloWorld.vue';
 
 @Component
-export default class Home extends Vue {}
+export default class $__CLASS_NAME__$ extends Vue {}
 </script>
 
 <style lang='stylus'>
@@ -19,7 +17,7 @@ html
     scroll-view: true;
     // static-view: true;
 
-#Home
+#$__CLASS_NAME__$
     .main-pane
         main-pane();
 </style>

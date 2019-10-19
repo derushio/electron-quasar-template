@@ -1,16 +1,17 @@
 <template lang='pug'>
-.VUE_NAME
+.$__VUE_NAME__$
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class CLASS_NAME extends Vue {}
+export default class $__CLASS_NAME__$ extends Vue {}
+Vue.component($__CLASS_NAME__$.name, $__CLASS_NAME__$);
 </script>
 
 <style lang='stylus' scoped>
 @require '~@/assets/styles/entry/_variable.styl';
 
-.VUE_NAME {}
+.$__VUE_NAME__$ {}
 </style>

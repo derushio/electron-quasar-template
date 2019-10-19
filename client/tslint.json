@@ -2,7 +2,7 @@
     "defaultSeverity": "warning",
     "extends": ["tslint:recommended"],
     "linterOptions": {
-        "exclude": ["node_modules/**", "dist/**", "**/*.json"]
+        "exclude": ["node_modules/**", "dist/**", "**/*.json", "tests/**/*.d.ts"]
     },
     "rules": {
         "align": false,
@@ -16,6 +16,9 @@
         "no-string-literal": false,
         "object-literal-sort-keys": false,
         "ordered-imports": false,
-        "quotemark": [true, "single"]
+        "quotemark": [true, "single"],
+        "forin": false,
+        "variable-name": false,
+        "no-reference": false
     }
 }
