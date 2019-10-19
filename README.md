@@ -23,6 +23,8 @@
     ```
 
 ### release
-```sh
-yarn build
-```
+1. edit APP_NAME and dist env in `./electron/scripts.sh`
+2. run
+    ```sh
+    yarn build
+    ```
