@@ -7,7 +7,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class $__CLASS_NAME__$ extends Vue {}
-Vue.component($__CLASS_NAME__$.name, $__CLASS_NAME__$);
+Vue.component('$__CLASS_NAME__$', $__CLASS_NAME__$);
 </script>
 
 <style lang='stylus' scoped>

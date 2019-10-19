@@ -27,7 +27,7 @@ export default class AspectRatio extends Vue {
         el.style.paddingTop = `${(1 / this.ratio) * 100}%`;
     }
 }
-Vue.component(AspectRatio.name, AspectRatio);
+Vue.component('AspectRatio', AspectRatio);
 </script>
 
 <style lang='stylus' scoped>
