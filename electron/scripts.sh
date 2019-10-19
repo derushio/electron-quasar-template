@@ -1,4 +1,5 @@
 #!/bin/bash -eu
+APP_NAME='Electron'
 
 function clean() {
     yarn rimraf './dist/*'
@@ -23,7 +24,7 @@ function build() {
         mkdir "./public/"
     fi
     rsync -avh "../client/dist/" "./public/"
-    yarn electron-packager "." "Electron" --platform="linux" --arch="x64" --out="./dist-electron"
+    yarn electron-packager "." "${APP_NAME}" --platform="linux" --arch="x64" --out="./dist-electron"
 }
 
 function dev() {
