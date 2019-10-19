@@ -13,11 +13,7 @@
 
 ## how to use
 ### develop
-1. in `./client`
-    ```sh
-    yarn serve
-    ```
-2. in `./electron`
+1. run
     ```sh
     yarn dev
     ```
