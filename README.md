@@ -24,3 +24,13 @@
     ```sh
     yarn build
     ```
+
+### util
+* in `./client`
+```
+yarn create:view --name path/to/view
+```
+
+```
+yarn create:compo --name path/to/component
+```
