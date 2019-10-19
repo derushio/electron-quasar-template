@@ -18,6 +18,12 @@ env.NODE_ENV = (env.NODE_ENV === 'production')
 console.log('NODE_ENV:', env.NODE_ENV);
 
 /**
+ * Path / File
+ */
+const path = require('path');
+const electronSrcPath = path.resolve(__dirname, '../electron', 'src');
+
+/**
  * 製品環境判定
  */
 const isProduct = env.NODE_ENV == 'production';
@@ -46,6 +52,7 @@ module.exports = {
         resolve: {
             alias: {
                 'vue$': 'vue/dist/vue.esm.js',
+                '%': path.resolve(electronSrcPath),
             },
             mainFields: ['browser', 'main', 'module'],
         },

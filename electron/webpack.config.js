@@ -25,6 +25,7 @@ const webpack = require('webpack');
 const contextPath = path.resolve(__dirname, './');
 const distPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
+const clientSrcPath = path.resolve(__dirname, '../client', 'src');
 
 /**
  * 製品環境判定
@@ -54,6 +55,7 @@ module.exports = {
         extensions: [ '.js', '.ts', '.json' ],
         alias: {
             '@': path.resolve(srcPath),
+            '%': path.resolve(clientSrcPath),
         },
     },
 

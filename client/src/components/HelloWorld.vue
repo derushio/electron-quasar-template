@@ -9,6 +9,9 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { aswait } from '@/utils/AsyncTimeout';
 import { QBtn } from 'quasar';
 
+// electron側のファイルを読み込むサンプル
+import RandomUtil from '%/utils/RandomUtil';
+
 @Component({
     components: { QBtn },
 })
@@ -26,7 +29,7 @@ export default class HelloWorld extends Vue {
     }
 
     protected async onClick() {
-        await this.$qqNotify.open('test');
+        await this.$qqNotify.open(`test: ${RandomUtil.rand(3)}`);
     }
 }
 Vue.component('HelloWorld', HelloWorld);
