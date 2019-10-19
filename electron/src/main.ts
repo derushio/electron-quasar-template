@@ -3,6 +3,10 @@ import * as sourceMapSupport from 'source-map-support';
 import { app } from 'electron';
 import MainWindows from '@/windows/MainWindows';
 
+// client側ファイルimportサンプル
+import ArrayUtil from '%/utils/ArrayUtil';
+console.log(ArrayUtil);
+
 function initSourceMap(): void {
     if (process.env.NODE_ENV === 'development') {
         sourceMapSupport.install();

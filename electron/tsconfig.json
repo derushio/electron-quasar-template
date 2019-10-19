@@ -1,25 +1,43 @@
 {
     "compilerOptions": {
-        "module": "es2015",
-        "target": "es5",
-        "moduleResolution": "node",
+        "target": "esnext",
+        "module": "esnext",
         "strict": true,
-        "sourceMap": true,
+        "jsx": "preserve",
+        "importHelpers": true,
+        "moduleResolution": "node",
         "experimentalDecorators": true,
-        "lib": [
-            "dom",
-            "es2017"
-        ],
-        "baseUrl": "src/",
+        "strictFunctionTypes": false,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "baseUrl": ".",
+        "types": [],
         "paths": {
-            "@/*": ["./*"],
-            "%/*": ["../electron/src/*"]
-        }
+            "@/*": [
+                "src/*"
+            ],
+            "%/*": [
+                "../client/src/*"
+            ]
+        },
+        "lib": [
+            "esnext",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ]
     },
     "include": [
         "src/**/*.ts",
-        "node_modules/@types/**/*.d.ts",
-        "src/types/**/*.d.ts"
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "tests/**/*.ts",
+        "tests/**/*.tsx"
     ],
-    "exclude": ["node_modules/**", "dist/**", "dist-electron/**",]
+    "exclude": [
+        "node_modules/**",
+        "dist/**"
+    ]
 }
