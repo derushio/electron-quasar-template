@@ -4,4 +4,7 @@ dist
 dist-electron
 document
 
+yarn-error.log
+yarn.lock
+
 .env.local
