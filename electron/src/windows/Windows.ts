@@ -27,6 +27,7 @@ export default abstract class Windows {
         const win = new BrowserWindow({width: 800, height: 600,
             webPreferences: {
                 webSecurity: false,
+                nodeIntegration: true,
             },
         });
 
@@ -47,10 +48,10 @@ export default abstract class Windows {
             });
         });
 
-        if (process.env.NODE_ENV !== 'production') {
+        // if (process.env.NODE_ENV !== 'production') {
             loadDevtool(loadDevtool.VUEJS_DEVTOOLS);
             win.webContents.openDevTools();
-        }
+        // }
     }
 
     protected abstract createMenu(): MenuItemConstructorOptions[];

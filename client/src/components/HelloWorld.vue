@@ -29,7 +29,7 @@ export default class HelloWorld extends Vue {
         await this.$qqNotify.open('test');
     }
 }
-Vue.component(HelloWorld.name, HelloWorld);
+Vue.component('HelloWorld', HelloWorld);
 </script>
 
 <style lang='stylus' scoped>
