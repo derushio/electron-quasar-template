@@ -1,4 +1,4 @@
-@require './_variable.styl';
+@require './variable.styl';
 
 canvas, iframe
     display: block;
@@ -10,6 +10,9 @@ a
 
 pre
 	white-space: pre-wrap;
+
+textarea
+    resize: none !important;
 
 .full-height
     height: 100%;
@@ -24,6 +27,9 @@ pre
 x-center()
     margin-left: auto; margin-right: auto;
 
+.x-center
+    x-center();
+
 .indent
     margin-left: 2rem;
 
@@ -32,6 +38,17 @@ x-center()
 
 .absolute
     position: absolute;
+
+.absolute-center
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+
+.scroll-x
+    overflow-x: auto;
+
+.scroll-y
+    overflow-y: auto;
 
 .cursor-pointer
     cursor: pointer;

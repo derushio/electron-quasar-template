@@ -2,12 +2,6 @@ import Vue from 'vue';
 
 import ExtendableError from 'extendable-error';
 
-export class QQLoadingError extends ExtendableError {
-    public constructor() {
-        super('QQLoading is handling error');
-    }
-}
-
 export default {
     async async(this: Vue, func: () => any) {
         return new Promise(async (resolve, reject) => {
@@ -19,9 +13,9 @@ export default {
                 this.$q.loading.hide();
                 resolve();
                 return;
-            } catch {
+            } catch (e) {
                 this.$q.loading.hide();
-                reject(new QQLoadingError());
+                reject(e);
                 return;
             }
         });

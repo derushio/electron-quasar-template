@@ -18,19 +18,15 @@ env.NODE_ENV = (env.NODE_ENV === 'production')
 console.log('NODE_ENV:', env.NODE_ENV);
 
 /**
- * Path / File
- */
-const path = require('path');
-const electronSrcPath = path.resolve(__dirname, '../electron', 'src');
-
-/**
  * 製品環境判定
  */
 const isProduct = env.NODE_ENV == 'production';
 
 module.exports = {
     // 商用の場合はpathをきちんと設定したほうが良い
-    publicPath: './',
+    publicPath: isProduct
+        ? '/'
+        : './',
 
     css: {
         sourceMap: !isProduct,
@@ -42,7 +38,6 @@ module.exports = {
     },
 
     configureWebpack: {
-        target: 'electron-renderer',
         devServer: {
             host: '0.0.0.0',
             disableHostCheck: true,
@@ -52,7 +47,6 @@ module.exports = {
         resolve: {
             alias: {
                 'vue$': 'vue/dist/vue.esm.js',
-                '%': path.resolve(electronSrcPath),
             },
             mainFields: ['browser', 'main', 'module'],
         },

@@ -7,5 +7,6 @@ export default interface QQDialog {
     alert: (options: string | QDialogOptions) => Promise<void>;
     confirm: (options: string | QDialogOptions) => Promise<boolean>;
     prompt: (options: string | QDialogOptions, handleError?: boolean) => Promise<string>;
-    component: (component: VueConstructor, props: any, needCard?: boolean, size?: QQDialogSize) => Promise<any>;
+    component: (component: VueConstructor, optionsProps: QDialogOptions & { props?: any } = {},
+        size?: QQDialogSize, needCard?: boolean) => Promise<any>;
 }

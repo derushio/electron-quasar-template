@@ -11,7 +11,7 @@ export default class $__CLASS_NAME__$ extends Vue {}
 </script>
 
 <style lang='stylus'>
-@require '~@/assets/styles/entry/_view.styl';
+@require '~@/assets/styles/entry/view.styl';
 
 html
     scroll-view: true;

@@ -46,7 +46,9 @@ yargs
     .example('yarn create:view --name \'path/to/view/ViewName\'',
         '`/src/views/path/to/view/ViewName.vue` を生成します')
     .example('yarn create:component --name \'path/to/component/ComponentName\'',
-        '`/src/components/path/to/component/ComponentName.vue` を生成します');
+        '`/src/components/path/to/component/ComponentName.vue` を生成します')
+    .example('yarn create:dialog --name \'path/to/component/DialogName\'',
+        '`/src/components/path/to/component/DialogName.vue` を生成します');
 const ARGS = yargs.parse(process.argv);
 
 // --------------------------------------------------
@@ -62,7 +64,7 @@ async function main() {
 
     try {
         const type = ARGS['type'] as string;
-        if (type !== 'view' && type !== 'component') {
+        if (type !== 'view' && type !== 'component' && type !== 'dialog') {
             throw new Error(`typeが不正です: ${type}`);
         }
 

@@ -9,8 +9,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { aswait } from '@/utils/AsyncTimeout';
 import { QBtn } from 'quasar';
 
-// electron側のファイルを読み込むサンプル
-import RandomUtil from '%/utils/RandomUtil';
+import SampleDialog from '@/dialogs/SampleDialog.vue';
 
 @Component({
     components: { QBtn },
@@ -24,19 +23,19 @@ export default class HelloWorld extends Vue {
             await aswait(1000);
         });
 
-        const result = await this.$qqDialog.prompt('test', false);
-        this.$logger.log(result);
+        const input = await this.$qqDialog.component(SampleDialog, { props: { text: 'hogehoge' } });
+        this.$logger.log(input);
     }
 
     protected async onClick() {
-        await this.$qqNotify.open(`test: ${RandomUtil.rand(3)}`);
+        await this.$qqNotify.open('test');
     }
 }
 Vue.component('HelloWorld', HelloWorld);
 </script>
 
 <style lang='stylus' scoped>
-@require '~@/assets/styles/entry/_variable.styl';
+@require '~@/assets/styles/entry/variable.styl';
 
 .hello-world {}
 </style>

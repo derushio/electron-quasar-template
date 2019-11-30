@@ -3,7 +3,7 @@ export default class RandomUtil {
         if (end == null) {
             return Math.random() * start;
         }
-        return Math.floor(Math.random() * (end - start) + start);
+        return Math.floor(Math.random() * (end + 1 - start) + start);
     }
 
     protected constructor() {}

@@ -13,7 +13,7 @@ export default class Home extends Vue {}
 </script>
 
 <style lang='stylus'>
-@require '~@/assets/styles/entry/_view.styl';
+@require '~@/assets/styles/entry/view.styl';
 
 html
     scroll-view: true;

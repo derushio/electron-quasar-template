@@ -1,6 +1,5 @@
 import Vue from 'vue';
 
-import '@/assets/styles/quasar/quasar.styl';
 import {
     Quasar,
     QLayout,

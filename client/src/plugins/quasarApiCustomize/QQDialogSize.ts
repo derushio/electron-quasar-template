@@ -1,8 +1,8 @@
-type QQDialogSize = 'small' | 'medium' | 'large';
+type QQDialogSize = 'sm' | 'md' | 'lg';
 const QQDialogWidth = {
-    small: '300px',
-    medium: '560px',
-    large: '800px',
+    sm: '300px',
+    md: '560px',
+    lg: '800px',
 };
 
 export default QQDialogSize;

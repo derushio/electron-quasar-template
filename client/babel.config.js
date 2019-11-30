@@ -3,6 +3,7 @@ module.exports = {
     "@vue/app"
   ],
   "plugins": [
+    "@babel/proposal-optional-chaining",
     [
       "transform-imports",
       {
