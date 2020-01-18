@@ -13,14 +13,7 @@
 
 ## how to use
 ### preparation
-1. run in `./client`
-    ```sh
-    yarn install
-    ```
-2. run in `./electron`
-    ```sh
-    yarn install
-    ```
+1. `yarn setup`
 
 ### develop
 1. run

@@ -16,6 +16,7 @@
   "dependencies": {
     "@quasar/extras": "^1.4.2",
     "@types/shortid": "^0.0.29",
+    "electron": "^7.1.9",
     "extendable-error": "^0.1.5",
     "lodash": "^4.17.15",
     "quasar": "^1.7.4",
