@@ -54,13 +54,13 @@ const ARGS = yargs.parse(process.argv);
 // --------------------------------------------------
 import chalk from 'chalk';
 import * as fs from 'fs';
-import { upperCaseFirst, hyphen } from 'change-case';
+import { pascalCase, paramCase } from 'change-case';
 
 async function main() {
     const pathName = ARGS['name'] as string;
     const regexResult = /^(.*\/)*(.*)$/.exec(pathName) as string[];
     const path = regexResult[1] || '';
-    const name = upperCaseFirst(regexResult[2]);
+    const name = pascalCase(regexResult[2]);
 
     try {
         const type = ARGS['type'] as string;
@@ -68,10 +68,10 @@ async function main() {
             throw new Error(`typeが不正です: ${type}`);
         }
 
-        const compo = fs.readFileSync(`./template/${upperCaseFirst(type)}.vue`);
+        const compo = fs.readFileSync(`./template/${pascalCase(type)}.vue`);
         const compoText = compo.toString()
             .replace(/\$__CLASS_NAME__\$/g, name)
-            .replace(/\$__VUE_NAME__\$/g, hyphen(name));
+            .replace(/\$__VUE_NAME__\$/g, paramCase(name));
 
         mkdirp.sync(`./src/${type}s/${path}`);
         fs.writeFileSync(`./src/${type}s/${path}${name}.vue`, compoText);

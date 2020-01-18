@@ -23,8 +23,10 @@ import {
     AppFullscreen,
     AppVisibility,
 } from 'quasar';
+import langJa from 'quasar/lang/ja';
 
 Vue.use(Quasar, {
+    lang: langJa,
     config: {},
     components: {
         QLayout,

@@ -129,6 +129,8 @@ export default {
                 component: Vue.extend({
                     components: { QDialog, QCard, QCardSection, QSeparator, QCardActions, QBtn, dialogComponent },
                     router: this.$router, store: this.$store,
+                    // For vue-i18n
+                    // i18n: this.$i18n,
                     beforeCreate(this: DialogView) {
                         dialog = this;
                     },

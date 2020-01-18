@@ -1,5 +1,5 @@
 <template lang='pug'>
-#Home
+#Home.full-height.q-layout-padding
     .main-pane
         hello-world(msg='HelloWorld')
 </template>
