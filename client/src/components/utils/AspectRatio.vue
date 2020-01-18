@@ -3,6 +3,7 @@
     .ratio(ref='ratio')
         .frame
             slot
+
 </template>
 
 <script lang='ts'>
@@ -28,6 +29,7 @@ export default class AspectRatio extends Vue {
     }
 }
 Vue.component('AspectRatio', AspectRatio);
+
 </script>
 
 <style lang='stylus' scoped>
@@ -44,4 +46,5 @@ Vue.component('AspectRatio', AspectRatio);
 
         & > *
             overflow: hidden;
+
 </style>

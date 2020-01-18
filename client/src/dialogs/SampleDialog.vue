@@ -7,6 +7,7 @@ q-card.sample-dialog
     q-card-actions(align='right')
         q-btn(flat color='warning' @click='$emit("cancel")') CANCEL
         q-btn(flat color='positive' @click='$emit("ok", input)') OK
+
 </template>
 
 <script lang='ts'>
@@ -31,10 +32,12 @@ export default class SampleDialog extends Vue {
     protected input = '';
 }
 Vue.component('SampleDialog', SampleDialog);
+
 </script>
 
 <style lang='stylus' scoped>
 @require '~@/assets/styles/entry/variable.styl';
 
 .sample-dialog {}
+
 </style>

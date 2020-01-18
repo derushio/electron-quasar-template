@@ -6,6 +6,7 @@
         div
             slot
     input.block.upload-input(:id='id' type='file' @change='onFileChange')
+
 </template>
 
 <script lang='ts'>
@@ -32,6 +33,7 @@ export default class UploadArea extends Vue {
     }
 }
 Vue.component('UploadArea', UploadArea);
+
 </script>
 
 <style lang='stylus' scoped>
@@ -62,4 +64,5 @@ Vue.component('UploadArea', UploadArea);
     .upload-input
         width: 0; height: 0;
         overflow: hidden;
+
 </style>

@@ -2,6 +2,7 @@
 .hello-world
     p {{ msg }}
     q-btn(@click='onClick') button
+
 </template>
 
 <script lang='ts'>
@@ -32,10 +33,12 @@ export default class HelloWorld extends Vue {
     }
 }
 Vue.component('HelloWorld', HelloWorld);
+
 </script>
 
 <style lang='stylus' scoped>
 @require '~@/assets/styles/entry/variable.styl';
 
 .hello-world {}
+
 </style>
