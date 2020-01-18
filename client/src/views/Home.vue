@@ -19,6 +19,11 @@ html
     scroll-view: true;
     // static-view: true;
 
+</style>
+
+<style lang='stylus' scoped>
+@require '~@/assets/styles/entry/variable.styl';
+
 #Home
     .main-pane
         main-pane();
