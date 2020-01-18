@@ -5,6 +5,7 @@
   "author": "derushio <narumi18wa@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "setup": "yarn && cd ./client && yarn && cd ../electron && yarn",
     "dev": "run-p dev:client dev:electron",
     "dev:client": "cd client; yarn serve",
     "dev:electron": "cd electron; yarn dev",
