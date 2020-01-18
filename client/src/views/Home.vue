@@ -19,12 +19,15 @@ html
     scroll-view: true;
     // static-view: true;
 
+#Home .main-pane
+    main-pane(900px);
+
 </style>
 
 <style lang='stylus' scoped>
 @require '~@/assets/styles/entry/variable.styl';
 
 #Home
-    .main-pane
-        main-pane();
+    .main-pane {}
+
 </style>
