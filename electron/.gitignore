@@ -1,8 +1,8 @@
-node_modules
-public
-dist
-dist-electron
-document
+/node_modules
+/dist
+/document
+/types
+/dist-electron
 
 yarn-error.log
 yarn.lock
