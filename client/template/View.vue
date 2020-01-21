@@ -1,5 +1,5 @@
 <template lang='pug'>
-#$__CLASS_NAME__$.full-height.q-layout-padding
+#$__CLASS_NAME__$.q-layout-padding
     .main-pane
 
 </template>

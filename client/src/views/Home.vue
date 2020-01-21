@@ -1,7 +1,8 @@
 <template lang='pug'>
-#Home.full-height.q-layout-padding
+#Home.q-layout-padding
     .main-pane
         hello-world(msg='HelloWorld')
+
 </template>
 
 <script lang='ts'>
