@@ -24,8 +24,9 @@ export default class HelloWorld extends Vue {
             await aswait(1000);
         });
 
-        const input = await this.$qqDialog.component(SampleDialog, { props: { text: 'hogehoge' } });
-        this.$logger.log(input);
+        const dialog = this.$qqDialog.component(SampleDialog, { props: { text: 'hogehoge' } });
+        await aswait(1000);
+        dialog.ok();
     }
 
     protected async onClick() {

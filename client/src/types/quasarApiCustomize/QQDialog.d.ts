@@ -3,10 +3,10 @@ import { QDialogOptions } from 'quasar';
 import QQDialogSize from '@/plugins/quasarApiCustomize/QQDialogSize';
 
 export default interface QQDialog {
-    open: (options: QDialogOptions, handleError?: boolean, def?: any) => Promise<any>;
-    alert: (options: string | QDialogOptions) => Promise<void>;
-    confirm: (options: string | QDialogOptions) => Promise<boolean>;
-    prompt: (options: string | QDialogOptions, handleError?: boolean) => Promise<string>;
+    open: (options: QDialogOptions, handleError?: boolean, def?: any) => Promise<any> & { ok: () => void };
+    alert: (options: string | QDialogOptions) => Promise<void> & { ok: () => void };
+    confirm: (options: string | QDialogOptions) => Promise<boolean> & { ok: () => void };
+    prompt: (options: string | QDialogOptions, handleError?: boolean) => Promise<string> & { ok: () => void };
     component: (component: VueConstructor, optionsProps: QDialogOptions & { props?: any } = {},
-        size?: QQDialogSize, needCard?: boolean) => Promise<any>;
+        size?: QQDialogSize, needCard?: boolean) => Promise<any> & { ok: () => void };
 }

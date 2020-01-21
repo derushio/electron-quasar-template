@@ -1,5 +1,5 @@
 import Vue, { VueConstructor } from 'vue';
-import { QDialog, QDialogOptions, QCard, QCardSection, QSeparator, QCardActions, QBtn } from 'quasar';
+import { QDialog, QDialogOptions, QCard, QCardSection, QSeparator, QCardActions, QBtn, Dialog } from 'quasar';
 
 import ExtendableError from 'extendable-error';
 
@@ -18,14 +18,17 @@ type DialogView = Vue & {
     ok: (data: any) => any, cancel: () => any,
 };
 
+type OKPromise<T> = Promise<T> & { ok: () => void };
+
 enum DialogState {
     SHOW, OK, CANCEL,
 }
 
 export default {
-    async open(this: Vue, options: QDialogOptions, handleError = true, def?: any) {
-        return new Promise<any>(async (resolve, reject) => {
-            this.$q.dialog(options)
+    open(this: Vue, options: QDialogOptions, handleError = true, def?: any): OKPromise<any> {
+        const dialog = this.$q.dialog(options);
+        const promise = new Promise<any>(async (resolve, reject) => {
+            dialog
                 .onOk((data: any) => {
                     resolve(data);
                 })
@@ -44,9 +47,14 @@ export default {
                     }
                 });
         });
+
+        return Object.assign(promise, { ok: () => {
+            handleError = false;
+            dialog.hide();
+        } });
     },
 
-    async alert(this: Vue, options: string | QDialogOptions): Promise<void> {
+    alert(this: Vue, options: string | QDialogOptions): OKPromise<void> {
         if (typeof options === String.name.toLowerCase()) {
             return this.$qqDialog.open({ message: options as string }, false);
         } else {
@@ -54,31 +62,39 @@ export default {
         }
     },
 
-    async confirm(this: Vue, options: string | QDialogOptions): Promise<boolean> {
-        try {
-            if (typeof options === String.name.toLowerCase()) {
-                await this.$qqDialog.open({
-                    message: options as string,
-                    cancel: true,
-                    persistent: true,
-                }, true);
-            } else {
-                await this.$qqDialog.open({
-                    cancel: true,
-                    persistent: true,
-                    ...(options as QDialogOptions),
-                }, true);
-            }
-        } catch {
-            return false;
+    confirm(this: Vue, options: string | QDialogOptions): OKPromise<boolean> {
+        let dialog: OKPromise<any>;
+        if (typeof options === String.name.toLowerCase()) {
+            dialog = this.$qqDialog.open({
+                message: options as string,
+                cancel: true,
+                persistent: true,
+            }, true);
+        } else {
+            dialog = this.$qqDialog.open({
+                cancel: true,
+                persistent: true,
+                ...(options as QDialogOptions),
+            }, true);
         }
 
-        return true;
+        const promise = new Promise<boolean>(async (resolve, reject) => {
+            try {
+                await dialog;
+            } catch {
+                return false;
+            }
+
+            return true;
+        });
+
+        return Object.assign(promise, { ok: dialog.ok });
     },
 
-    async prompt(this: Vue, options: string | QDialogOptions, handleError = true): Promise<string> {
+    prompt(this: Vue, options: string | QDialogOptions, handleError = true): Promise<string> {
+        let dialog: OKPromise<any>;
         if (typeof options === String.name.toLowerCase()) {
-            return await this.$qqDialog.open({
+            dialog = this.$qqDialog.open({
                 message: options as string,
                 cancel: true,
                 prompt: {
@@ -87,7 +103,7 @@ export default {
                 },
             }, handleError, '');
         } else {
-            return await this.$qqDialog.open({
+            dialog = this.$qqDialog.open({
                 cancel: true,
                 prompt: {
                     model: '',
@@ -96,14 +112,16 @@ export default {
                 ...(options as QDialogOptions),
             }, handleError, '');
         }
+
+        return dialog;
     },
 
-    async component(this: Vue, dialogComponent: VueConstructor,
+    component(this: Vue, dialogComponent: VueConstructor,
             optionsProps: QDialogOptions & { props?: any } = {},
-            size: QQDialogSize = 'sm', needCard: boolean = false): Promise<any> {
-        return new Promise<any>(async (resolve, reject) => {
-            let dialog: DialogView;
-
+            size: QQDialogSize = 'sm', needCard: boolean = false,
+            handleError = true, def = undefined as any): Promise<any> {
+        let dialog: DialogView;
+        const promise = new Promise<any>(async (resolve, reject) => {
             const o = lo.clone(optionsProps);
             const props = o.props || {};
             delete o.props;
@@ -121,7 +139,11 @@ export default {
 
             function cancel(this: DialogView) {
                 hide.call(this);
-                reject(new QQDialogCancelError());
+                if (handleError) {
+                    reject(new QQDialogCancelError());
+                } else {
+                    resolve(def);
+                }
             }
 
             this.$q.dialog({
@@ -226,5 +248,10 @@ export default {
                 }),
             });
         });
+
+        return Object.assign(promise, { ok: () => {
+            handleError = false;
+            dialog.hide();
+        } });
     },
 };
