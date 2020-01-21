@@ -17,7 +17,7 @@ export default class ImgUtil {
                 resolve(image);
             };
             image.onerror = (e) => {
-                console.error('loadImg error');
+                window.console.error('loadImg error');
                 reject(e);
             };
 
@@ -33,7 +33,7 @@ export default class ImgUtil {
                 resolve(await this.loadImg(reader.result as string));
             };
             reader.onerror = (e) => {
-                console.error('loadBlob error');
+                window.console.error('loadBlob error');
                 reject(e);
             };
 
