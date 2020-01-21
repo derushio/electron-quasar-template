@@ -17,6 +17,7 @@ export default class ImgUtil {
                 resolve(image);
             };
             image.onerror = (e) => {
+                console.error('loadImg error');
                 reject(e);
             };
 
@@ -29,10 +30,10 @@ export default class ImgUtil {
             const reader = new FileReader();
 
             reader.onload = async () => {
-
                 resolve(await this.loadImg(reader.result as string));
             };
             reader.onerror = (e) => {
+                console.error('loadBlob error');
                 reject(e);
             };
 
