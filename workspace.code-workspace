@@ -7,7 +7,7 @@
 			"path": "electron"
 		},
 		{
-			"path": ""
+			"path": "."
 		}
 	],
     "settings": {
