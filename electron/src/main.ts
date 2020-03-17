@@ -1,10 +1,10 @@
 import * as sourceMapSupport from 'source-map-support';
 
 import { app } from 'electron';
-import MainWindows from '@/windows/MainWindows';
+import MainWindows from '%/windows/MainWindows';
 
 // client側ファイルimportサンプル
-import ArrayUtil from '%/utils/ArrayUtil';
+import ArrayUtil from '@/utils/ArrayUtil';
 console.log(ArrayUtil);
 
 function initSourceMap(): void {

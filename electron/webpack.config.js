@@ -4,20 +4,22 @@ const dotenv = require('dotenv');
  * 環境設定
  * .envが共通ファイル、.env.localが個人用ファイル
  */
-const env = Object.assign({},
+const env = Object.assign(
+    {},
     dotenv.config({ path: '.env' }).parsed || {},
-    dotenv.config({ path: '.env.local' }).parsed || {});
+    dotenv.config({ path: '.env.local' }).parsed || {},
+);
 
 /**
  * ビルド環境
  */
-env.NODE_ENV = (env.NODE_ENV === 'production')
-    ? env.NODE_ENV
-    : process.env.NODE_ENV;
+env.NODE_ENV =
+    env.NODE_ENV === 'production' ? env.NODE_ENV : process.env.NODE_ENV;
 console.log('NODE_ENV:', env.NODE_ENV);
 
 const path = require('path');
 const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 
 /**
  * Path / File
@@ -49,13 +51,15 @@ module.exports = {
         path: distPath,
         filename: '[name].bundle.js',
         publicPath: './',
+        // library: process.env.PROJECT_NAME,
+        // libraryTarget: 'umd',
     },
 
     resolve: {
-        extensions: [ '.js', '.ts', '.json' ],
+        extensions: ['.js', '.ts', '.json'],
         alias: {
-            '@': path.resolve(srcPath),
-            '%': path.resolve(clientSrcPath),
+            '%': path.resolve(srcPath),
+            '@': path.resolve(clientSrcPath),
         },
     },
 
@@ -63,14 +67,12 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: [ 'babel-loader', 'ts-loader', 'tslint-loader' ],
+                use: ['babel-loader', 'ts-loader'],
             },
         ],
     },
 
-    plugins: [
-        new webpack.DefinePlugin({}),
-    ],
+    plugins: [new webpack.DefinePlugin({})],
 
-    devtool: isProduct? false: '#source-map',
+    devtool: isProduct ? false : '#source-map',
 };

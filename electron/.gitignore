@@ -5,8 +5,5 @@
 /dist-electron
 
 yarn-error.log
-yarn.lock
 
 .env.local
-
-.vscode

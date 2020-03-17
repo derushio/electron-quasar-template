@@ -6,7 +6,15 @@ function clean() {
     yarn rimraf './public/*'
 }
 
+function lint() {
+    eslint ./src/**/*.ts
+}
+
 function build() {
+    lint && build_electron
+}
+
+function build_electron() {
     clean
     yarn rimraf './dist-electron/*'
     export NODE_ENV='production'
@@ -28,6 +36,10 @@ function build() {
 }
 
 function dev() {
+    lint && dev_electron
+}
+
+function dev_electron() {
     clean
     export NODE_ENV='development'
 

@@ -14,7 +14,8 @@
         "baseUrl": ".",
         "types": ["webpack-env", "jest", "cypress"],
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": ["src/*"],
+            "%/*": ["../client/src/*"],
         },
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
