@@ -9,21 +9,26 @@ export class QQLoadingBarError extends ExtendableError {
 }
 
 export default {
-    async async(this: Vue, func: (increment: (amount?: number) => void) => any) {
-        return new Promise(async (resolve, reject) => {
-            this.$q.loadingBar.start();
+    async async(
+        this: Vue,
+        func: (increment: (amount?: number) => void) => any,
+    ): Promise<void> {
+        return new Promise(
+            async (resolve, reject): Promise<void> => {
+                this.$q.loadingBar.start();
 
-            try {
-                await func(this.$q.loadingBar.increment);
+                try {
+                    await func(this.$q.loadingBar.increment);
 
-                this.$q.loadingBar.stop();
-                resolve();
-                return;
-            } catch {
-                this.$q.loadingBar.stop();
-                reject(new QQLoadingBarError());
-                return;
-            }
-        });
+                    this.$q.loadingBar.stop();
+                    resolve();
+                    return;
+                } catch {
+                    this.$q.loadingBar.stop();
+                    reject(new QQLoadingBarError());
+                    return;
+                }
+            },
+        );
     },
 };

@@ -5,16 +5,17 @@ const dotenv = require('dotenv');
  * 環境設定
  * .envが共通ファイル、.env.localが個人用ファイル
  */
-const env = Object.assign({},
+const env = Object.assign(
+    {},
     dotenv.config({ path: '.env' }).parsed || {},
-    dotenv.config({ path: '.env.local' }).parsed || {});
+    dotenv.config({ path: '.env.local' }).parsed || {},
+);
 
 /**
  * ビルド環境
  */
-env.NODE_ENV = (env.NODE_ENV === 'production')
-    ? env.NODE_ENV
-    : process.env.NODE_ENV;
+env.NODE_ENV =
+    env.NODE_ENV === 'production' ? env.NODE_ENV : process.env.NODE_ENV;
 console.log('NODE_ENV:', env.NODE_ENV);
 
 /**
@@ -29,7 +30,12 @@ const electronSrcPath = path.resolve(__dirname, '../electron', 'src');
 const isProduct = env.NODE_ENV == 'production';
 
 module.exports = {
-    // 商用の場合はpathをきちんと設定したほうが良い
+    pwa: {
+        iconPaths: {
+            favicon32: './favicon.ico',
+            themeColor: '#027BE3',
+        },
+    },
     publicPath: './',
 
     css: {
@@ -76,7 +82,5 @@ module.exports = {
         },
     },
 
-    transpileDependencies: [
-        /[\\\/]node_modules[\\\/]quasar[\\\/]/,
-    ],
+    transpileDependencies: [/[\\\/]node_modules[\\\/]quasar[\\\/]/],
 };

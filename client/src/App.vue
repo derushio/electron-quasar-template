@@ -1,4 +1,4 @@
-<template lang='pug'>
+<template lang="pug">
 #app
     q-layout(view='lhr Lpr lFr')
         q-header.bg-primary.text-white(elevated)
@@ -13,16 +13,28 @@
                 router-view
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { QLayout, QHeader, QToolbar, QToolbarTitle,
-QDrawer, QPageContainer, QPage, QBtn } from 'quasar';
+import {
+    QLayout,
+    QHeader,
+    QToolbar,
+    QToolbarTitle,
+    QDrawer,
+    QPageContainer,
+    QPage,
+    QBtn,
+} from 'quasar';
 
 @Component({
     components: {
-        QLayout, QHeader,
-        QToolbar, QToolbarTitle,
-        QDrawer, QPageContainer, QPage,
+        QLayout,
+        QHeader,
+        QToolbar,
+        QToolbarTitle,
+        QDrawer,
+        QPageContainer,
+        QPage,
         QBtn,
     },
 })
@@ -32,16 +44,20 @@ export default class App extends Vue {
 }
 </script>
 
-<style lang='stylus'>
+<style lang="stylus">
 @require '~@/assets/styles/entry/app.styl';
 
-#app
+#app {
     background-color: transparent;
     position: relative;
+}
 
-.outer-drawer
-    width: 100%; height: 100%;
-    top: 0; left: 0;
+.outer-drawer {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     position: fixed;
     z-index: $drawer-outside;
+}
 </style>
