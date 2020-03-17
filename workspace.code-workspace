@@ -1,0 +1,16 @@
+{
+    "folders": [
+		{
+			"path": "client"
+		},
+		{
+			"path": "electron"
+		},
+		{
+			"path": ""
+		}
+	],
+    "settings": {
+        "typescript.tsdk": "node_modules/typescript/lib"
+    }
+}
